@@ -1,9 +1,12 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/auth/sign_in/sign_in_page.dart';
 
+// ignore: must_be_immutable
 class SMSCodePage extends StatelessWidget {
   SMSCodePage({Key? key}) : super(key: key);
 
   final smsTextController = TextEditingController();
+  GlobalKey<FormState> formKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +31,17 @@ class SMSCodePage extends StatelessWidget {
                 smsTextController,
                 "1265141651",
                 TextInputType.number,
+                4,
               ),
               SizedBox(height: size.height * 0.02),
-              ButtonFields(() {}, "Tasdiqlash"),
+              ButtonFields(() {
+                 if (formKey.currentState!.validate()) {
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => SignInPage()),
+                    );
+                  }
+              }, "Tasdiqlash"),
             ],
           ),
         ),

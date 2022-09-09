@@ -2,6 +2,7 @@ import 'package:apple_bro_test/constants/exports.dart';
 
 // ignore: must_be_immutable
 class SignInWithFields extends StatelessWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final function;
   String icon;
   SignInWithFields(this.function, this.icon, {super.key});
@@ -15,8 +16,8 @@ class SignInWithFields extends StatelessWidget {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10.0),
           border: Border.all(color: StaticColors.kLightGreyBorderColor, width: 2.0)),
-      margin: EdgeInsets.all(10.0),
-      padding: EdgeInsets.all(10.0),
+      margin: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.all(10.0),
       child: InkWell(
         child: SvgPicture.asset(icon),
         onTap: () => function,

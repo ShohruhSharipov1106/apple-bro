@@ -36,7 +36,7 @@ class SplashPage1 extends StatelessWidget {
               ),
             ),
             SizedBox(height: size.height * 0.01),
-            Text(
+           const  Text(
               "Notification text would be placed right here. This is\nwhere notification text would be placed.",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -54,7 +54,7 @@ class SplashPage1 extends StatelessWidget {
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
                 Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => SplashPage2()));
+                    MaterialPageRoute(builder: (context) => const SplashPage2()));
               },
               child: Text(
                 "Davom etish",

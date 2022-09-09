@@ -9,7 +9,7 @@ class SplashPage3 extends StatelessWidget {
     return SplashScreen(
       "assets/icons/package.svg",
       "Telefoningizni Apple Bro\nbilan tezroq soting!",
-      SplashPage4(),
+    const   SplashPage4(),
     );
   }
 }

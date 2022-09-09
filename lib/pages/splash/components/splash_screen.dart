@@ -5,6 +5,7 @@ import 'package:apple_bro_test/pages/home/home_page.dart';
 class SplashScreen extends StatelessWidget {
   String icon;
   String title;
+  // ignore: prefer_typing_uninitialized_variables
   var route;
   SplashScreen(this.icon, this.title, this.route, {super.key});
 
@@ -43,14 +44,14 @@ class SplashScreen extends StatelessWidget {
             Text(
               title,
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 28.0,
                 color: StaticColors.kBlackColor,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(height: size.height * 0.01),
-            Text(
+            const Text(
               "Notification text would be placed right here. This is\nwhere notification text would be placed.",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -70,7 +71,8 @@ class SplashScreen extends StatelessWidget {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => route));
               },
-              child: Text(
+              // edit text
+              child:  Text(
                 "Keyingisi",
                 style: TextStyle(
                   color: Colors.white,

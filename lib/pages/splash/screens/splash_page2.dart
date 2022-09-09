@@ -9,7 +9,7 @@ class SplashPage2 extends StatelessWidget {
     return SplashScreen(
       "assets/icons/store-front.svg",
       "Apple maxsulotlarini\nqulay va oson sotib oling!",
-      SplashPage3(),
+    const   SplashPage3(),
     );
   }
 }
