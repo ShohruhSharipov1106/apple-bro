@@ -1,12 +1,18 @@
 import 'package:apple_bro_test/constants/exports.dart';
 
 class BrendlarField extends StatelessWidget {
-  const BrendlarField({
+  BrendlarField({
     Key? key,
     required this.size,
   }) : super(key: key);
 
   final Size size;
+  final List<String> logos = [
+    "assets/icons/apple-black.svg",
+    "assets/icons/puma.svg",
+    "assets/icons/microsoft.svg",
+    "assets/icons/dell.svg",
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -36,14 +42,14 @@ class BrendlarField extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.25),
                       blurRadius: 2,
                       spreadRadius: 2,
-                      offset: Offset(-2, 2),
+                      offset: const Offset(-2, 2),
                     ),
                   ],
                 ),
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: SvgPicture.asset(
-                  "assets/icons/white-apple.svg",
-                  color: StaticColors.kBlackColor,
+                  logos[index],
+                  fit: BoxFit.scaleDown,
                 ),
               ),
             ),

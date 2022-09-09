@@ -61,12 +61,14 @@ class HomePage extends StatelessWidget {
                       ),
                       child: TextField(
                         controller: searchTextController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           contentPadding:
                               EdgeInsets.symmetric(horizontal: 20.0),
                           focusedBorder:
                               UnderlineInputBorder(borderSide: BorderSide.none),
                           hintText: "Qidirish",
+                          border:
+                              UnderlineInputBorder(borderSide: BorderSide.none),
                           hintStyle: TextStyle(
                             fontSize: 15.0,
                             fontWeight: FontWeight.w400,
@@ -101,13 +103,12 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: StaticColors.kUnselectedItemColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        
         items: const [
           BottomNavigationBarItem(icon: Icon(IconlyBold.home), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyLight.heart), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyLight.plus), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyLight.chat), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyLight.discovery), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyBold.heart), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyBold.plus), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyBold.chat), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyBold.discovery), label: ""),
         ],
       ),
     );

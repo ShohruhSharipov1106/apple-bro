@@ -39,7 +39,7 @@ class TelefonlarField extends StatelessWidget {
                       color: Colors.grey.withOpacity(0.25),
                       blurRadius: 2,
                       spreadRadius: 2,
-                      offset: Offset(2, 2),
+                      offset: const Offset(2, 2),
                     ),
                   ],
                   image: DecorationImage(
@@ -83,7 +83,7 @@ class TelefonlarField extends StatelessWidget {
                     Expanded(
                       flex: 1,
                       child: Container(
-                        decoration: BoxDecoration(
+                        decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.vertical(
                             bottom: Radius.circular(16.0),

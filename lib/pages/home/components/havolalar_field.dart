@@ -26,8 +26,8 @@ class HavolalarField extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
-              itemBuilder: (context, index) => const DecoratedBox(
-                decoration: BoxDecoration(
+              itemBuilder: (context, index) => DecoratedBox(
+                decoration: const BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
                       Color(0xff357AF6),
@@ -39,12 +39,15 @@ class HavolalarField extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Padding(
-                  padding: EdgeInsets.all(2.0),
+                  padding: const EdgeInsets.all(1.5),
                   child: CircleAvatar(
                     backgroundColor: Colors.white,
                     child: CircleAvatar(
-                      radius: 25,
+                      radius: size.height * 0.033,
                       backgroundColor: StaticColors.kActiveBorderColor,
+                      backgroundImage: NetworkImage(
+                        "https://source.unsplash.com/random/$index"
+                      ),
                     ),
                   ),
                 ),
