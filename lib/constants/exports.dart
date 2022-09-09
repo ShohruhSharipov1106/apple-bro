@@ -8,3 +8,4 @@ export 'package:apple_bro_test/pages/auth/components/input_fields.dart';
 export 'package:apple_bro_test/pages/auth/components/sign_in_with_fields.dart';
 export 'package:apple_bro_test/pages/auth/sign_up/sign_up_page.dart';
 export 'package:apple_bro_test/pages/auth/forgot_password/forgot_password_page.dart';
+export 'package:apple_bro_test/pages/home/components/title_field.dart';

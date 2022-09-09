@@ -13,4 +13,5 @@ class StaticColors {
   static const kActiveBorderColor = Color(0xff3461EB);
   static const kBlackTextColor = Color(0xff333333);
   static const kLightGreyBorderColor = Color(0xffC6CBD9);
+  static const kUnselectedItemColor = Color(0xff9FAAC8);
 }

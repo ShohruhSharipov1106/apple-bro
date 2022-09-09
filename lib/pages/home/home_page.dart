@@ -1,10 +1,14 @@
-import 'package:apple_bro_test/components/emblem_title.dart';
 import 'package:apple_bro_test/constants/exports.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:apple_bro_test/pages/home/components/best_choices_field.dart';
+import 'package:apple_bro_test/pages/home/components/brendlar_field.dart';
+import 'package:apple_bro_test/pages/home/components/havolalar_field.dart';
+import 'package:apple_bro_test/pages/home/components/telefonlar_field.dart';
+import 'package:iconly/iconly.dart';
 
+// ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
+  TextEditingController searchTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -12,190 +16,99 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Center(
-          child: Padding(
-            padding: EdgeInsets.only(left: size.width * 0.05),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                EmblemTitle(),
-                Padding(
-                  padding:
-                      EdgeInsets.only(top: 10.0, bottom: size.height * 0.05),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Havolalar",
-                            style: TextStyle(
-                              color: StaticColors.kBlackColor,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w700,
-                            ),
+          child: Column(
+            children: [
+              Container(
+                height: size.height * 0.2,
+                width: size.width,
+                decoration: const BoxDecoration(
+                  color: StaticColors.kBlueButtonColor,
+                  borderRadius: BorderRadius.vertical(
+                    bottom: Radius.circular(16.0),
+                  ),
+                ),
+                child: Column(
+                  children: [
+                    SizedBox(height: size.height * 0.05),
+                    Row(
+                      children: [
+                        SizedBox(width: size.width * 0.05),
+                        Text(
+                          "Apple Bro",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 28.0,
                           ),
-                          SizedBox(width: size.width * 0.55),
-                          Text(
-                            "Barchasi",
-                            style: TextStyle(
-                              color: StaticColors.kActiveBorderColor,
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
+                        ),
+                        SizedBox(width: size.width * 0.42),
+                        CircleAvatar(
+                          radius: 25.0,
+                          backgroundColor: StaticColors.kGreyTextColor,
+                          backgroundImage: NetworkImage(
+                            "https://source.unsplash.com/random/5",
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(height: size.height * 0.02),
+                    Container(
+                      height: size.height * 0.05,
+                      width: size.width * 0.9,
+                      decoration: BoxDecoration(
+                        color: StaticColors.kGreyBackColor,
+                        borderRadius: BorderRadius.circular(16.0),
                       ),
-                      SizedBox(height: size.height * 0.01),
-                      SizedBox(
-                        height: size.height * 0.08,
-                        child: GridView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: 20,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 1,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                          ),
-                          itemBuilder: (context, index) => const DecoratedBox(
-                            decoration: BoxDecoration(
-                              gradient: LinearGradient(
-                                colors: [
-                                  Color(0xff357AF6),
-                                  Color(0xffF635C0),
-                                ],
-                                begin: Alignment.topCenter,
-                                end: Alignment.bottomCenter,
-                              ),
-                              shape: BoxShape.circle,
-                            ),
-                            child: Padding(
-                              padding: EdgeInsets.all(2.0),
-                              child: CircleAvatar(
-                                backgroundColor: Colors.white,
-                                child: CircleAvatar(
-                                  radius: 25,
-                                  backgroundColor:
-                                      StaticColors.kActiveBorderColor,
-                                ),
-                              ),
-                            ),
+                      child: TextField(
+                        controller: searchTextController,
+                        decoration: InputDecoration(
+                          contentPadding:
+                              EdgeInsets.symmetric(horizontal: 20.0),
+                          focusedBorder:
+                              UnderlineInputBorder(borderSide: BorderSide.none),
+                          hintText: "Qidirish",
+                          hintStyle: TextStyle(
+                            fontSize: 15.0,
+                            fontWeight: FontWeight.w400,
+                            color: StaticColors.kGreyBorderColor,
                           ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-                Padding(
-                  padding: EdgeInsets.only(
-                      top: 10.0,
-                      bottom: size.height * 0.05,
-                      right: size.width * 0.05),
-                  child: Column(
-                    children: [
-                      Row(
-                        children: [
-                          Text(
-                            "Telefonlar",
-                            style: TextStyle(
-                              color: StaticColors.kBlackColor,
-                              fontSize: 16.0,
-                              fontWeight: FontWeight.w700,
-                            ),
-                          ),
-                          SizedBox(width: size.width * 0.55),
-                          Text(
-                            "Barchasi",
-                            style: TextStyle(
-                              color: StaticColors.kActiveBorderColor,
-                              fontSize: 13.0,
-                              fontWeight: FontWeight.w400,
-                            ),
-                          )
-                        ],
-                      ),
-                      SizedBox(height: size.height * 0.01),
-                      SizedBox(
-                        height: size.height * 0.8,
-                        child: GridView.builder(
-                          scrollDirection: Axis.vertical,
-                          itemCount: 20,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            childAspectRatio: 0.75,
-                          ),
-                          itemBuilder: (context, index) => Container(
-                            decoration: BoxDecoration(
-                              color: StaticColors.kActiveBorderColor,
-                              borderRadius: BorderRadius.circular(16.0),
-                              image: DecorationImage(
-                                image: NetworkImage(
-                                    "https://source.unsplash.com/random/$index"),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            child: Column(
-                              children: [
-                                Expanded(
-                                  flex: 1,
-                                  child: Padding(
-                                    padding: EdgeInsets.symmetric(
-                                      vertical: size.height * 0.02,
-                                      horizontal: size.width * 0.02,
-                                    ),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        CircleAvatar(
-                                          backgroundColor:
-                                              Colors.grey.withOpacity(0.75),
-                                          child: SvgPicture.asset(index % 2 == 0
-                                              ? "assets/icons/white-apple.svg"
-                                              : "assets/icons/discount.svg"),
-                                        ),
-                                        GestureDetector(
-                                          child: CircleAvatar(
-                                            backgroundColor:
-                                                Colors.grey.withOpacity(0.75),
-                                            child: const Icon(
-                                              CupertinoIcons.heart,
-                                              color: Colors.white,
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                Expanded(
-                                  flex: 1,
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Colors.white,
-                                      borderRadius: BorderRadius.vertical(
-                                        bottom: Radius.circular(16.0),
-                                      ),
-                                    ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+              ),
+              Padding(
+                padding: EdgeInsets.only(left: size.width * 0.05),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    HavolalarField(size: size),
+                    TelefonlarField(size: size),
+                    BrendlarField(size: size),
+                    BestChoicesField(size: size),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 1,
+        selectedItemColor: StaticColors.kBlueTextColor,
+        unselectedItemColor: StaticColors.kUnselectedItemColor,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        
+        items: const [
+          BottomNavigationBarItem(icon: Icon(IconlyBold.home), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.heart), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.plus), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.chat), label: ""),
+          BottomNavigationBarItem(icon: Icon(IconlyLight.discovery), label: ""),
+        ],
       ),
     );
   }

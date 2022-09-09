@@ -1,5 +1,6 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/auth/sign_in/sign_in_page.dart';
+import 'package:apple_bro_test/pages/home/home_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Apple Bro',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(primarySwatch: Colors.blue),
-      home:  SignInPage(),
+      home:  HomePage(),
     );
   }
 }
