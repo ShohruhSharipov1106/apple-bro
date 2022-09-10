@@ -1,7 +1,8 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:flutter/cupertino.dart';
 
 // ignore: must_be_immutable
-class InputFields extends StatelessWidget {
+class InputFields extends StatefulWidget {
   String title;
   TextEditingController textEditingController;
   String hintText;
@@ -14,6 +15,13 @@ class InputFields extends StatelessWidget {
       {this.hasEye = false, super.key});
 
   @override
+  State<InputFields> createState() => _InputFieldsState();
+}
+
+class _InputFieldsState extends State<InputFields> {
+  bool visible = false;
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
@@ -24,23 +32,24 @@ class InputFields extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            widget.title,
             style: GoogleFonts.inter(
                 fontSize: 16.0,
                 color: StaticColors.kBlackTextColor,
                 fontWeight: FontWeight.w400),
           ),
-          SizedBox(height: size.height * 0.02),
+          SizedBox(height: size.height * 0.01),
           TextFormField(
-            keyboardType: textInputType,
-            controller: textEditingController,
+            keyboardType: widget.textInputType,
+            controller: widget.textEditingController,
             validator: (value) {
-              if (textEditingController.text.length < maxLen) {
+              if (widget.textEditingController.text.length < widget.maxLen) {
                 return "";
               } else {
                 return null;
               }
             },
+            obscureText: visible,
             decoration: InputDecoration(
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 0, horizontal: 10),
@@ -50,16 +59,21 @@ class InputFields extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                   borderSide:
                       const BorderSide(color: StaticColors.kActiveBorderColor)),
-              hintText: hintText,
+              hintText: widget.hintText,
               hintStyle: GoogleFonts.inter(
                   fontSize: 16.0, fontWeight: FontWeight.w400),
-              suffixIcon: GestureDetector(
-                // add function
-                onTap: () {},
-                child: !hasEye
+              suffixIcon: InkWell(
+                onTap: () {
+                  setState(() {
+                    visible = !visible;
+                  });
+                },
+                child: !widget.hasEye
                     ? const SizedBox()
-                    : const Icon(
-                        Icons.remove_red_eye_rounded,
+                    : Icon(
+                        !visible
+                            ? CupertinoIcons.eye_slash
+                            : CupertinoIcons.eye_fill,
                         color: StaticColors.kBlackTextColor,
                       ),
               ),

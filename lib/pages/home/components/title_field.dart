@@ -17,14 +17,14 @@ class TitleField extends StatelessWidget {
       children: [
         Text(
           title,
-          style: const  TextStyle(
+          style: const TextStyle(
             color: StaticColors.kBlackColor,
             fontSize: 16.0,
             fontWeight: FontWeight.w700,
           ),
         ),
-      const   Spacer(),
-        Text(
+        const Spacer(),
+        const Text(
           "Barchasi",
           style: TextStyle(
             color: StaticColors.kActiveBorderColor,

@@ -28,6 +28,8 @@ class ForgotPasswordPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: size.height * 0.1),
+                const EmblemTitle(),
+                SizedBox(height: size.height * 0.03),
                 InputFields(
                   "Telefon raqam",
                   phoneTextController,
@@ -35,12 +37,13 @@ class ForgotPasswordPage extends StatelessWidget {
                   TextInputType.phone,
                   13,
                 ),
-                SizedBox(height: size.height * 0.38),
+                SizedBox(height: size.height * 0.275),
                 ButtonFields(() {
-                   if (formKey.currentState!.validate()) {
+                  if (formKey.currentState!.validate()) {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => CodeForgotPasswordPage()),
+                      MaterialPageRoute(
+                          builder: (context) => CodeForgotPasswordPage()),
                     );
                   }
                 }, "Kodni qabul qilish"),

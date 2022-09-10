@@ -11,15 +11,19 @@ class HavolalarField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 25.0, bottom: size.height * 0.05),
+      padding: EdgeInsets.only(top: 25.0, bottom: size.height * 0.02),
       child: Column(
         children: [
-          TitleField(size: size, "Havolalar"),
-          SizedBox(height: size.height * 0.01),
+          Padding(
+            padding: EdgeInsets.only(right: size.width * 0.045),
+            child: TitleField(size: size, "Havolalar"),
+          ),
+          SizedBox(height: size.height * 0.02),
           SizedBox(
             height: size.height * 0.08,
             child: GridView.builder(
               scrollDirection: Axis.horizontal,
+              physics: const BouncingScrollPhysics(),
               itemCount: 20,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
@@ -46,8 +50,7 @@ class HavolalarField extends StatelessWidget {
                       radius: size.height * 0.033,
                       backgroundColor: StaticColors.kActiveBorderColor,
                       backgroundImage: NetworkImage(
-                        "https://source.unsplash.com/random/$index"
-                      ),
+                          "https://source.unsplash.com/random/$index"),
                     ),
                   ),
                 ),

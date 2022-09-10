@@ -7,8 +7,15 @@ class EmblemTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        SvgPicture.asset("assets/icons/emblem-title.svg"),
-       
+        Image.asset("assets/icons/small-emblem.png"),
+        Text(
+          "Apple Bro",
+          style: GoogleFonts.roboto(
+            fontWeight: FontWeight.bold,
+            fontSize: 32.0,
+            color: Colors.black,
+          ),
+        ),
       ],
     );
   }

@@ -1,4 +1,5 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/auth/sign_in/sign_in_page.dart';
 import 'package:apple_bro_test/pages/home/home_page.dart';
 
 // ignore: must_be_immutable
@@ -64,15 +65,14 @@ class SplashScreen extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   fixedSize: Size(size.width * 0.88, size.height * 0.05),
                   backgroundColor: StaticColors.kBlueButtonColor,
-                  elevation: 0,
+                  elevation: 3,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
                 Navigator.pushReplacement(
                     context, MaterialPageRoute(builder: (context) => route));
               },
-              // edit text
-              child:  Text(
+              child: const Text(
                 "Keyingisi",
                 style: TextStyle(
                   color: Colors.white,
@@ -83,10 +83,17 @@ class SplashScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        StaticDatas.storage.read("firstTime") == "firstTime"
+                            ? HomePage()
+                            : SignInPage(),
+                  ),
+                );
               },
-              child: Text(
+              child: const Text(
                 "O'tkazib yuborish",
                 style: TextStyle(
                   color: StaticColors.kBlueTextColor,

@@ -30,7 +30,9 @@ class SignUpPage extends StatelessWidget {
             key: formKey,
             child: Column(
               children: [
-                SizedBox(height: size.height * 0.1),
+                SizedBox(height: size.height * 0.05),
+                const EmblemTitle(),
+                SizedBox(height: size.height * 0.01),
                 InputFields(
                   "Telefon raqam",
                   phoneTextController,
@@ -105,7 +107,6 @@ class SignUpPage extends StatelessWidget {
                       SizedBox(width: size.width * 0.17),
                       SignInWithFields(() {}, "assets/icons/google.svg"),
                       SignInWithFields(() {}, "assets/icons/apple.svg"),
-                      // edit logo
                       SignInWithFields(() {}, "assets/icons/facebook.svg"),
                     ],
                   ),

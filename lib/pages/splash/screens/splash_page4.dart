@@ -6,7 +6,10 @@ class SplashPage4 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SplashScreen("assets/icons/currency-circle-dollar.svg",
-        "Apple Broga soting!", SignInPage());
+    return SplashScreen(
+      "assets/icons/currency-circle-dollar.svg",
+      "Apple Broga soting!",
+      SignInPage(),
+    );
   }
 }

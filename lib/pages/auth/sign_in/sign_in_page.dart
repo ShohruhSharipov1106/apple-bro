@@ -27,7 +27,9 @@ class SignInPage extends StatelessWidget {
             key: formKey,
             child: Column(
               children: [
-                SizedBox(height: size.height * 0.2),
+                SizedBox(height: size.height * 0.1),
+                const EmblemTitle(),
+                SizedBox(height: size.height * 0.03),
                 InputFields(
                   "Telefon raqam",
                   phoneTextController,
@@ -65,12 +67,16 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: size.height * 0.02),
-                ButtonFields(() {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.pushReplacement(context,
-                        MaterialPageRoute(builder: (context) => HomePage()));
-                  }
-                }, "Kirish"),
+                ButtonFields(
+                  () {
+                    if (formKey.currentState!.validate()) {
+                      StaticDatas.storage.write("firstTime", "firstTime");
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => HomePage()));
+                    }
+                  },
+                  "Kirish",
+                ),
                 SizedBox(height: size.height * 0.02),
                 Text(
                   "Kirish uchun qo'shimcha",

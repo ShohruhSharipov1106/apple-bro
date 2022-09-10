@@ -24,19 +24,19 @@ class SplashPage1 extends StatelessWidget {
             CircleAvatar(
               radius: size.height * 0.12,
               backgroundColor: Colors.transparent,
-              child: Image.asset("assets/icons/emblem.png"),
+              child: Image.asset("assets/icons/medium-emblem.png"),
             ),
-            Text(
+            const Text(
               "Apple Bro ilovasiga\nxush kelibsiz",
               textAlign: TextAlign.center,
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 28.0,
                 color: StaticColors.kBlackColor,
                 fontWeight: FontWeight.w500,
               ),
             ),
             SizedBox(height: size.height * 0.01),
-           const  Text(
+            const Text(
               "Notification text would be placed right here. This is\nwhere notification text would be placed.",
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -49,14 +49,16 @@ class SplashPage1 extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   fixedSize: Size(size.width * 0.88, size.height * 0.05),
                   backgroundColor: StaticColors.kBlueButtonColor,
-                  elevation: 0,
+                  elevation: 3,
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10))),
               onPressed: () {
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const SplashPage2()));
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SplashPage2()));
               },
-              child: Text(
+              child: const Text(
                 "Davom etish",
                 style: TextStyle(
                   color: Colors.white,

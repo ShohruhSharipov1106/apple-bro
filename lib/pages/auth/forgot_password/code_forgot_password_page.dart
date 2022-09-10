@@ -29,6 +29,8 @@ class CodeForgotPasswordPage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(height: size.height * 0.1),
+                const EmblemTitle(),
+                SizedBox(height: size.height * 0.03),
                 InputFields(
                   "SMS Code",
                   smsTextController,
@@ -43,15 +45,18 @@ class CodeForgotPasswordPage extends StatelessWidget {
                   TextInputType.visiblePassword,
                   8,
                 ),
-                SizedBox(height: size.height * 0.3),
-                ButtonFields(() {
-                  if (formKey.currentState!.validate()) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => SignInPage()),
-                    );
-                  }
-                }, "Tasdiqlash"),
+                SizedBox(height: size.height * 0.15),
+                ButtonFields(
+                  () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => SignInPage()),
+                      );
+                    }
+                  },
+                  "Tasdiqlash",
+                ),
                 SizedBox(height: size.height * 0.02),
                 Text(
                   "Kirish uchun qo'shimcha",
@@ -66,7 +71,6 @@ class CodeForgotPasswordPage extends StatelessWidget {
                     SizedBox(width: size.width * 0.17),
                     SignInWithFields(() {}, "assets/icons/google.svg"),
                     SignInWithFields(() {}, "assets/icons/apple.svg"),
-                    // edit logo
                     SignInWithFields(() {}, "assets/icons/facebook.svg"),
                   ],
                 ),
@@ -81,17 +85,18 @@ class CodeForgotPasswordPage extends StatelessWidget {
                       ),
                     ),
                     TextButton(
-                        onPressed: () => Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpPage())),
-                        child: Text(
-                          "Ro'yxatdan o'tish",
-                          style: GoogleFonts.inter(
-                            fontSize: 14.0,
-                            color: StaticColors.kActiveBorderColor,
-                          ),
-                        ))
+                      onPressed: () => Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => SignUpPage())),
+                      child: Text(
+                        "Ro'yxatdan o'tish",
+                        style: GoogleFonts.inter(
+                          fontSize: 14.0,
+                          color: StaticColors.kActiveBorderColor,
+                        ),
+                      ),
+                    ),
                   ],
                 )
               ],

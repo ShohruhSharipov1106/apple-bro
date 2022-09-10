@@ -23,26 +23,31 @@ class SMSCodePage extends StatelessWidget {
         ),
         child: SingleChildScrollView(
           physics: const BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              SizedBox(height: size.height * 0.1),
-              InputFields(
-                "SMS code",
-                smsTextController,
-                "1265141651",
-                TextInputType.number,
-                4,
-              ),
-              SizedBox(height: size.height * 0.02),
-              ButtonFields(() {
-                 if (formKey.currentState!.validate()) {
+          child: Form(
+            key: formKey,
+            child: Column(
+              children: [
+                SizedBox(height: size.height * 0.1),
+                const EmblemTitle(),
+                SizedBox(height: size.height * 0.03),
+                InputFields(
+                  "SMS code",
+                  smsTextController,
+                  "1265141651",
+                  TextInputType.number,
+                  4,
+                ),
+                SizedBox(height: size.height * 0.02),
+                ButtonFields(() {
+                  if (formKey.currentState!.validate()) {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(builder: (context) => SignInPage()),
                     );
                   }
-              }, "Tasdiqlash"),
-            ],
+                }, "Tasdiqlash"),
+              ],
+            ),
           ),
         ),
       ),

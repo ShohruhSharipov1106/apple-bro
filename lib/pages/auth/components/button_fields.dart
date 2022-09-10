@@ -15,7 +15,7 @@ class ButtonFields extends StatelessWidget {
       style: ElevatedButton.styleFrom(
           fixedSize: Size(size.width * 0.88, size.height * 0.05),
           backgroundColor: StaticColors.kBlueButtonColor,
-          elevation: 0,
+          elevation: 3,
           shape:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
       onPressed: function,
