@@ -5,7 +5,6 @@ import 'package:apple_bro_test/pages/auth/sign_in/sign_in_page.dart';
 class CodeForgotPasswordPage extends StatelessWidget {
   CodeForgotPasswordPage({super.key});
   final smsTextController = TextEditingController();
-  final newPasswordTextController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
@@ -40,8 +39,10 @@ class CodeForgotPasswordPage extends StatelessWidget {
                 ),
                 InputFields(
                   "Yangi parol",
-                  newPasswordTextController,
-                  "151354916",
+                  context.read<AuthProvider>().newPasswordController,
+                  context.read<AuthProvider>().newPasswordController.text == ""
+                      ? "151354916"
+                      : context.read<AuthProvider>().newPasswordController.text,
                   TextInputType.visiblePassword,
                   8,
                 ),

@@ -5,10 +5,6 @@ import 'package:apple_bro_test/pages/auth/sign_up/sms_code_page.dart';
 class SignUpPage extends StatelessWidget {
   SignUpPage({Key? key}) : super(key: key);
 
-  final phoneTextController = TextEditingController();
-  final nameTextController = TextEditingController();
-  final surnameTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
@@ -35,29 +31,37 @@ class SignUpPage extends StatelessWidget {
                 SizedBox(height: size.height * 0.01),
                 InputFields(
                   "Telefon raqam",
-                  phoneTextController,
-                  "Telefon raqamingiz",
+                  context.read<AuthProvider>().phoneController,
+                  context.read<AuthProvider>().phoneController.text == ""
+                      ? "Telefon raqamingiz"
+                      : context.read<AuthProvider>().phoneController.text,
                   TextInputType.phone,
                   13,
                 ),
                 InputFields(
                   "Ism",
-                  nameTextController,
-                  "Ismingiz",
+                  context.read<AuthProvider>().nameController,
+                  context.read<AuthProvider>().nameController.text == ""
+                      ? "Ismingiz"
+                      : context.read<AuthProvider>().nameController.text,
                   TextInputType.text,
                   2,
                 ),
                 InputFields(
                   "Familiya",
-                  surnameTextController,
-                  "Familiyangiz",
+                  context.read<AuthProvider>().surnameController,
+                  context.read<AuthProvider>().surnameController.text == ""
+                      ? "Familyangiz"
+                      : context.read<AuthProvider>().surnameController.text,
                   TextInputType.text,
                   3,
                 ),
                 InputFields(
                   "Parol",
-                  passwordTextController,
-                  "Parol kiritish",
+                  context.read<AuthProvider>().oldPasswordController,
+                  context.read<AuthProvider>().oldPasswordController.text == ""
+                      ? "Parol kiritish"
+                      : context.read<AuthProvider>().oldPasswordController.text,
                   TextInputType.visiblePassword,
                   hasEye: true,
                   8,

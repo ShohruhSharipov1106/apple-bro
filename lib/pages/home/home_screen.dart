@@ -40,7 +40,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: size.width * 0.42),
-                    CircleAvatar(
+                    const CircleAvatar(
                       radius: 25.0,
                       backgroundColor: StaticColors.kGreyTextColor,
                       backgroundImage: NetworkImage(

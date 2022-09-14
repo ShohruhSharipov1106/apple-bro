@@ -5,8 +5,6 @@ import 'package:apple_bro_test/pages/home/home_page.dart';
 class SignInPage extends StatelessWidget {
   SignInPage({super.key});
 
-  final phoneTextController = TextEditingController();
-  final passwordTextController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
@@ -32,15 +30,19 @@ class SignInPage extends StatelessWidget {
                 SizedBox(height: size.height * 0.03),
                 InputFields(
                   "Telefon raqam",
-                  phoneTextController,
-                  "Telefon raqamingiz",
+                  context.read<AuthProvider>().phoneController,
+                  context.read<AuthProvider>().phoneController.text == ""
+                      ? "Telefon raqamingiz"
+                      : context.read<AuthProvider>().phoneController.text,
                   TextInputType.phone,
                   13,
                 ),
                 InputFields(
                   "Parol",
-                  passwordTextController,
-                  "Parol kiritish",
+                  context.read<AuthProvider>().oldPasswordController,
+                  context.read<AuthProvider>().oldPasswordController.text == ""
+                      ? "Parol kiritish"
+                      : context.read<AuthProvider>().oldPasswordController.text,
                   TextInputType.visiblePassword,
                   hasEye: true,
                   8,

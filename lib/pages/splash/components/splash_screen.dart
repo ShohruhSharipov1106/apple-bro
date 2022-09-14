@@ -88,7 +88,7 @@ class SplashScreen extends StatelessWidget {
                   MaterialPageRoute(
                     builder: (context) =>
                         StaticDatas.storage.read("firstTime") == "firstTime"
-                            ? HomePage()
+                            ? const  HomePage()
                             : SignInPage(),
                   ),
                 );

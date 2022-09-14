@@ -14,3 +14,5 @@ export 'package:apple_bro_test/constants/static_datas.dart';
 export 'package:apple_bro_test/components/emblem_title.dart';
 export 'package:apple_bro_test/pages/home/details/details_page.dart';
 export 'package:iconly/iconly.dart';
+export 'package:provider/provider.dart';
+export 'package:apple_bro_test/provider/auth_provider.dart';

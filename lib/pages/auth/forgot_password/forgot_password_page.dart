@@ -4,7 +4,6 @@ import 'package:apple_bro_test/pages/auth/forgot_password/code_forgot_password_p
 // ignore: must_be_immutable
 class ForgotPasswordPage extends StatelessWidget {
   ForgotPasswordPage({super.key});
-  final phoneTextController = TextEditingController();
   GlobalKey<FormState> formKey = GlobalKey();
 
   @override
@@ -32,8 +31,10 @@ class ForgotPasswordPage extends StatelessWidget {
                 SizedBox(height: size.height * 0.03),
                 InputFields(
                   "Telefon raqam",
-                  phoneTextController,
-                  "Telefon raqamingiz",
+                  context.read<AuthProvider>().phoneController,
+                  context.read<AuthProvider>().phoneController.text == ""
+                      ? "Telefon raqamingiz"
+                      : context.read<AuthProvider>().phoneController.text,
                   TextInputType.phone,
                   13,
                 ),
