@@ -3,6 +3,7 @@ import 'package:apple_bro_test/pages/home/components/best_choices_field.dart';
 import 'package:apple_bro_test/pages/home/components/brendlar_field.dart';
 import 'package:apple_bro_test/pages/home/components/havolalar_field.dart';
 import 'package:apple_bro_test/pages/home/components/telefonlar_field.dart';
+import 'package:apple_bro_test/pages/profile/profile_page.dart';
 
 // ignore: must_be_immutable
 class HomeScreen extends StatelessWidget {
@@ -40,11 +41,19 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     SizedBox(width: size.width * 0.42),
-                    const CircleAvatar(
-                      radius: 25.0,
-                      backgroundColor: StaticColors.kGreyTextColor,
-                      backgroundImage: NetworkImage(
-                        "https://source.unsplash.com/random/5",
+                    InkWell(
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const ProfilePage(),
+                        ),
+                      ),
+                      child: const CircleAvatar(
+                        radius: 25.0,
+                        backgroundColor: StaticColors.kGreyTextColor,
+                        backgroundImage: NetworkImage(
+                          "https://source.unsplash.com/random/5",
+                        ),
                       ),
                     ),
                   ],

@@ -11,20 +11,30 @@ class ButtonFields extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
 
-    return ElevatedButton(
-      style: ElevatedButton.styleFrom(
-          fixedSize: Size(size.width * 0.88, size.height * 0.05),
-          backgroundColor: StaticColors.kBlueButtonColor,
-          elevation: 3,
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10))),
-      onPressed: function,
-      child: Text(
-        title,
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 16.0,
-          fontWeight: FontWeight.w400,
+    return GestureDetector(
+      onTap: function,
+      child: Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xff699FFF),
+              Color(0xff134EB7),
+            ],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          borderRadius: BorderRadius.circular(10),
+        ),
+        width: size.width * 0.92,
+        height: size.height * 0.05,
+        child: Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 16.0,
+            fontWeight: FontWeight.w400,
+          ),
         ),
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/add_ads/add_ads_page.dart';
 import 'package:apple_bro_test/pages/chat/contact_page.dart';
 import 'package:apple_bro_test/pages/favorites/favorites_page.dart';
 import 'package:apple_bro_test/pages/home/home_screen.dart';
@@ -17,6 +18,7 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     HomeScreen(),
     FavoritesPage(),
+    AddAdsPage("title"),
     const ContactPage(),
   ];
   @override
@@ -35,12 +37,33 @@ class _HomePageState extends State<HomePage> {
         unselectedItemColor: StaticColors.kUnselectedItemColor,
         showSelectedLabels: false,
         showUnselectedLabels: false,
-        items: const [
-          BottomNavigationBarItem(icon: Icon(IconlyBold.home), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyBold.heart), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyBold.plus), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyBold.chat), label: ""),
-          BottomNavigationBarItem(icon: Icon(IconlyBold.discovery), label: ""),
+        type: BottomNavigationBarType.fixed,
+        items: [
+          const BottomNavigationBarItem(icon: Icon(IconlyBold.home), label: ""),
+          const BottomNavigationBarItem(
+              icon: Icon(IconlyBold.heart), label: ""),
+          BottomNavigationBarItem(
+              icon: Container(
+                  padding: const EdgeInsets.all(8.0),
+                  decoration: const BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xff699FFF),
+                        Color(0xff134EB7),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  )),
+              label: ""),
+          const BottomNavigationBarItem(icon: Icon(IconlyBold.chat), label: ""),
+          const BottomNavigationBarItem(
+              icon: Icon(IconlyBold.discovery), label: ""),
         ],
       ),
     );

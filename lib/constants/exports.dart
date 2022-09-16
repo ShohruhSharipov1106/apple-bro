@@ -16,3 +16,4 @@ export 'package:apple_bro_test/pages/home/details/details_page.dart';
 export 'package:iconly/iconly.dart';
 export 'package:provider/provider.dart';
 export 'package:apple_bro_test/provider/auth_provider.dart';
+export 'package:apple_bro_test/pages/add_ads/components/custom_input.dart';

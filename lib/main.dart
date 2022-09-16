@@ -1,4 +1,5 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/add_ads/add_ads_page.dart';
 import 'package:apple_bro_test/pages/auth/sign_in/sign_in_page.dart';
 import 'package:apple_bro_test/pages/chat/chat_page.dart';
 import 'package:apple_bro_test/pages/home/details/details_page.dart';
@@ -50,7 +51,7 @@ class MyApp extends StatelessWidget {
       // home: StaticDatas.storage.read("firstTime") == "firstTime"
       //     ? const HomePage()
       //     : const SplashPage1(),
-      home: HomePage(),
+      home: AddAdsPage("Title"),
     );
   }
 }
