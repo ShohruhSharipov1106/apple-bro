@@ -1,5 +1,8 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/add_ads/add_ads_page.dart';
+import 'package:apple_bro_test/pages/add_ads/ads_page.dart';
+import 'package:apple_bro_test/pages/add_ads/give_ads_page.dart';
+import 'package:apple_bro_test/pages/add_ads/success_ads.dart';
 import 'package:apple_bro_test/pages/auth/sign_in/sign_in_page.dart';
 import 'package:apple_bro_test/pages/chat/chat_page.dart';
 import 'package:apple_bro_test/pages/home/details/details_page.dart';
@@ -8,6 +11,7 @@ import 'package:apple_bro_test/pages/profile/fullfill_card_page.dart';
 import 'package:apple_bro_test/pages/profile/profile_page.dart';
 import 'package:apple_bro_test/pages/profile/your_card_page.dart';
 import 'package:apple_bro_test/pages/splash/screens/splash_page1.dart';
+import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:apple_bro_test/provider/auth_provider.dart';
 import 'package:apple_bro_test/provider/payment_provider.dart';
 
@@ -18,6 +22,7 @@ void main() async {
       providers: [
         ChangeNotifierProvider(create: (context) => AuthProvider()),
         ChangeNotifierProvider(create: (context) => PaymentProvider()),
+        ChangeNotifierProvider(create: (context) => AdsProvider()),
       ],
       child: const MyApp(),
     ),
@@ -37,7 +42,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         scaffoldBackgroundColor: Colors.white,
-        appBarTheme:  AppBarTheme(
+        appBarTheme: AppBarTheme(
           backgroundColor: StaticColors.kBackgroundColor.withOpacity(0.94),
           elevation: 1,
           shadowColor: Colors.black,
@@ -51,7 +56,7 @@ class MyApp extends StatelessWidget {
       // home: StaticDatas.storage.read("firstTime") == "firstTime"
       //     ? const HomePage()
       //     : const SplashPage1(),
-      home: AddAdsPage("Title"),
+      home: HomePage(),
     );
   }
 }

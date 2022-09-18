@@ -1,4 +1,7 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/add_ads/ads_condition_page.dart';
+import 'package:apple_bro_test/pages/add_ads/components/tile_with_bottom_sheet.dart';
+import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:flutter/cupertino.dart';
 
 // ignore: must_be_immutable
@@ -13,10 +16,6 @@ class AddAdsPage extends StatefulWidget {
 class _AddAdsPageState extends State<AddAdsPage> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
   final TextEditingController searchController = TextEditingController();
-  final TextEditingController tavsifController = TextEditingController();
-  final TextEditingController priceController = TextEditingController();
-  final TextEditingController locationController = TextEditingController();
-  final TextEditingController ownerNameController = TextEditingController();
   final TextEditingController ownerEmailController = TextEditingController();
   final TextEditingController ownerPhoneController = TextEditingController();
   final List<String> listTileTitles = ["Brend", "Model", "Rang", "Storage"];
@@ -32,6 +31,19 @@ class _AddAdsPageState extends State<AddAdsPage> {
       key: _scaffoldKey,
       appBar: AppBar(
         title: Text(widget.title),
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: IconButton(
+            icon: const Icon(
+              CupertinoIcons.left_chevron,
+              color: StaticColors.kActiveIconColor,
+              size: 30.0,
+            ),
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
+        ),
       ),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
@@ -39,11 +51,26 @@ class _AddAdsPageState extends State<AddAdsPage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-                height: height * 0.15,
-                margin: const EdgeInsets.all(16),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: Colors.green)),
+              height: height * 0.15,
+              margin: const EdgeInsets.all(16),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                image: const DecorationImage(
+                  image: AssetImage("assets/images/video_background.png"),
+                  fit: BoxFit.cover,
+                ),
+              ),
+              child: Center(
+                child: IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
+                    CupertinoIcons.play_arrow_solid,
+                    size: 40,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
             const Text("Qanday qilib e'lon berish kerak",
                 style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.w400)),
             _titleField(width, height, "Rasm yuklash"),
@@ -114,43 +141,63 @@ class _AddAdsPageState extends State<AddAdsPage> {
                 separatorBuilder: (context, index) =>
                     const Divider(endIndent: 16.0),
                 itemBuilder: (BuildContext context, int index) {
-                  return ListTile(
-                    title: Text(
-                      listTileTitles[index],
-                      style: const TextStyle(
-                        color: StaticColors.kBlackTextColor,
-                        fontWeight: FontWeight.w400,
-                        fontSize: 16.0,
-                      ),
-                    ),
-                    trailing: const Icon(CupertinoIcons.right_chevron),
+                  return TileWithBottomSheet(
+                    listTileTitles: listTileTitles,
+                    height: height,
+                    width: width,
+                    elements: const [
+                      [
+                        "iPhone",
+                        "iPad",
+                        "Mac",
+                        "AirPods",
+                        "Accessoires",
+                        "iWatch",
+                        "Xiomi"
+                      ],
+                      [
+                        "iPhone X",
+                        "iPhone 11",
+                        "iPhone 12",
+                        "iPhone 12 Pro",
+                        "iPhone 12 Pro Max",
+                        "iPhone 13 Pro Max"
+                      ],
+                      ["Black", "Red", "Grey", "Choco", "Silver"],
+                      ["256 GB", "128 GB", "512 GB", "1 TB"]
+                    ],
+                    index: index,
+                    title: [
+                      "Brend",
+                      "Model",
+                      "Color",
+                      "Storage Capacity"
+                    ][index],
                   );
                 },
               ),
             ),
-            const Divider(indent: 8.0, endIndent: 16.0),
+            const Divider(indent: 8, endIndent: 16),
             _titleField(width, height, "Holati"),
-            ToggleButtons(
-              selectedColor: Colors.green,
-              disabledColor: Colors.red,
-              isSelected: const [true, false],
-              children: [
-                Container(
-                  height: height * 0.1,
-                  width: width * 0.2,
-                  color: Colors.amber,
-                ),
-                Container(
-                  height: height * 0.1,
-                  width: width * 0.2,
-                  color: Colors.amber,
-                ),
-              ],
+            Container(
+              width: width * 0.92,
+              height: height * 0.065,
+              decoration: BoxDecoration(
+                color: const Color(0xff767680).withOpacity(0.12),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              padding: const EdgeInsets.symmetric(horizontal: 2, vertical: 3),
+              child: Row(
+                children: [
+                  _phoneCondition("Yangi", "Yangi"),
+                  _phoneCondition("Ishlatilgan", "Ishlatilgan"),
+                ],
+              ),
             ),
             _titleField(width, height, "Tavsif"),
             CustomInput(
               size: size,
-              textController: tavsifController,
+              textController: context.read<AdsProvider>().tavsifController,
               hint: "Tavsif",
               height: 0.25,
               textInputType: TextInputType.multiline,
@@ -164,10 +211,12 @@ class _AddAdsPageState extends State<AddAdsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   CustomInput(
-                      size: size,
-                      textController: priceController,
-                      hint: "15 000 000",
-                      width: 0.74),
+                    size: size,
+                    textController: context.read<AdsProvider>().priceController,
+                    hint: "15 000 000",
+                    width: 0.74,
+                    textInputType: TextInputType.number,
+                  ),
                   Container(
                     height: size.height * 0.06,
                     width: size.width * 0.17,
@@ -184,17 +233,25 @@ class _AddAdsPageState extends State<AddAdsPage> {
                         value: currency,
                         items: const [
                           DropdownMenuItem(
-                              value: "uz",
-                              child: Text("uzs",
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w400))),
+                            value: "uz",
+                            child: Text(
+                              "uzs",
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
                           DropdownMenuItem(
-                              value: "eu",
-                              child: Text("ye.",
-                                  style: TextStyle(
-                                      fontSize: 15.0,
-                                      fontWeight: FontWeight.w400))),
+                            value: "eu",
+                            child: Text(
+                              "ye.",
+                              style: TextStyle(
+                                fontSize: 15.0,
+                                fontWeight: FontWeight.w400,
+                              ),
+                            ),
+                          ),
                         ],
                         onChanged: (value) {
                           setState(() {
@@ -209,44 +266,135 @@ class _AddAdsPageState extends State<AddAdsPage> {
             ),
             _titleField(width, height, "Aloqa uchun informatsiyalar"),
             CustomInput(
-                size: size,
-                textController: locationController,
-                hint: " Yunusobod Tumani , Unversam bozori ...",
-                preIcon: const Icon(CupertinoIcons.location_solid,
-                    color: Color(0xff0071E3))),
+              size: size,
+              textController: context.read<AdsProvider>().locationController,
+              hint: " Yunusobod Tumani , Unversam bozori ...",
+              preIcon: const Icon(
+                CupertinoIcons.location_solid,
+                color: Color(0xff0071E3),
+              ),
+            ),
             _titleField(width, height, "Aloqa uchun"),
             CustomInput(
-                size: size,
-                textController: ownerNameController,
-                hint: "Aloqa uchun shaxs"),
+              size: size,
+              textController: context.read<AdsProvider>().ownerNameController,
+              hint: "Aloqa uchun shaxs",
+            ),
             const SizedBox(height: 10),
             CustomInput(
-                size: size,
-                textController: ownerEmailController,
-                hint: "Email"),
+              size: size,
+              textController: ownerEmailController,
+              hint: "Email",
+              textInputType: TextInputType.emailAddress,
+            ),
             const SizedBox(height: 10),
             CustomInput(
-                size: size,
-                textController: ownerPhoneController,
-                hint: "Aloqa uchun telfon raqam"),
+              size: size,
+              textController: ownerPhoneController,
+              hint: "Aloqa uchun telfon raqam",
+              textInputType: TextInputType.phone,
+            ),
             const SizedBox(height: 10),
-            switchField(
-                width,
-                height,
-                "Tekshirishga roziman",
-                "iPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib\nolganimdek sotaman yangi telefon modeli.Ekrandagi oyna\nhech qachon origina",
-                agreed),
+            Row(
+              children: [
+                _titleField(width * 0.8, height, "Tekshirishga roziman"),
+                CupertinoSwitch(
+                  value: agreed,
+                  onChanged: (value) {
+                    setState(() {
+                      agreed = value;
+                    });
+                  },
+                  activeColor: StaticColors.kBlueButtonColor,
+                  trackColor: const Color(0xff969696),
+                ),
+              ],
+            ),
+            const Text(
+              "iPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib\nolganimdek sotaman yangi telefon modeli.Ekrandagi oyna\nhech qachon origina",
+              style: TextStyle(
+                fontSize: 13.0,
+                fontWeight: FontWeight.w400,
+                color: StaticColors.kSubtitleColor,
+              ),
+            ),
             const Divider(
                 color: Color(0xffE8E8E8), indent: 16, thickness: 1, height: 25),
-            switchField(
-                width,
-                height,
-                "Stiker olishga zayavka qoldirish",
-                "iPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib\nolganimdek sotaman yangi telefon modeli.Ekrandagi oyna\nhech qachon origina",
-                sticker),
+            Row(
+              children: [
+                _titleField(
+                    width * 0.8, height, "Stiker olishga zayavka qoldirish"),
+                CupertinoSwitch(
+                  value: sticker,
+                  onChanged: (value) {
+                    setState(() {
+                      sticker = value;
+                    });
+                  },
+                  activeColor: StaticColors.kBlueButtonColor,
+                  trackColor: const Color(0xff969696),
+                ),
+              ],
+            ),
+            const Text(
+              "iPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib\nolganimdek sotaman yangi telefon modeli.Ekrandagi oyna\nhech qachon origina",
+              style: TextStyle(
+                fontSize: 13.0,
+                fontWeight: FontWeight.w400,
+                color: StaticColors.kSubtitleColor,
+              ),
+            ),
             const Divider(color: Color(0xffE8E8E8), indent: 16, thickness: 1),
             const SizedBox(height: 20),
-            ButtonFields(() {}, "Keyingisi"),
+            ButtonFields(() {
+              widget.title == "Apple Bro bilan"
+                  ? showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(24)),
+                        content: Padding(
+                          padding: const EdgeInsets.only(top: 28),
+                          child: CircleAvatar(
+                            backgroundColor:
+                                const Color(0xff00C2FF).withOpacity(0.3),
+                            radius: width * 0.1,
+                            child: const Icon(
+                              CupertinoIcons.phone,
+                              color: Color(0xff020202),
+                            ),
+                          ),
+                        ),
+                        contentPadding:
+                            const EdgeInsets.symmetric(horizontal: 40),
+                        actions: const [
+                          Padding(
+                            padding: EdgeInsets.symmetric(
+                                horizontal: 16, vertical: 20),
+                            child: Text(
+                              "Apple Bro tez orada siz\nbilan bog’lanadi",
+                              textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff020202),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+                  : Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AdsConditionPage(
+                          "assets/images/iphone-background.png",
+                          true,
+                          "assets/icons/white-apple.svg",
+                        ),
+                      ),
+                    );
+            }, "Keyingisi"),
             const SizedBox(height: 50),
           ],
         ),
@@ -254,34 +402,34 @@ class _AddAdsPageState extends State<AddAdsPage> {
     );
   }
 
-  Column switchField(
-      double width, double height, String title, String subtitle, bool isTrue) {
-    return Column(
-      children: [
-        Row(
-          children: [
-            _titleField(width * 0.8, height, title),
-            CupertinoSwitch(
-              value: isTrue,
-              onChanged: (value) {
-                setState(() {
-                  isTrue = value;
-                });
-              },
-              activeColor: StaticColors.kBlueButtonColor,
-              trackColor: const Color(0xff969696),
+  Expanded _phoneCondition(String name, String text) {
+    return Expanded(
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            context.read<AdsProvider>().holati = name;
+          });
+        },
+        child: Card(
+          color: context.read<AdsProvider>().holati == name
+              ? Colors.white
+              : Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+          elevation: context.read<AdsProvider>().holati == name ? 1.5 : 0,
+          child: Center(
+            child: Text(
+              text,
+              style: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.w500,
+                color: Colors.black,
+              ),
             ),
-          ],
-        ),
-        Text(
-          subtitle,
-          style: const TextStyle(
-            fontSize: 13.0,
-            fontWeight: FontWeight.w400,
-            color: StaticColors.kSubtitleColor,
           ),
         ),
-      ],
+      ),
     );
   }
 

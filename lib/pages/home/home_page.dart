@@ -1,5 +1,6 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/add_ads/add_ads_page.dart';
+import 'package:apple_bro_test/pages/add_ads/ads_page.dart';
 import 'package:apple_bro_test/pages/chat/contact_page.dart';
 import 'package:apple_bro_test/pages/favorites/favorites_page.dart';
 import 'package:apple_bro_test/pages/home/home_screen.dart';
@@ -18,7 +19,7 @@ class _HomePageState extends State<HomePage> {
   List pages = [
     HomeScreen(),
     FavoritesPage(),
-    AddAdsPage("title"),
+    const AdsPage(),
     const ContactPage(),
   ];
   @override

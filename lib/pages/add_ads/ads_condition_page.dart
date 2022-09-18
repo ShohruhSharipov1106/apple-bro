@@ -4,26 +4,26 @@ import 'package:apple_bro_test/pages/home/details/components/elev_button.dart';
 import 'package:apple_bro_test/pages/home/details/components/item_card.dart';
 import 'package:apple_bro_test/pages/home/details/components/out_button.dart';
 import 'package:apple_bro_test/pages/home/details/components/whose_ads.dart';
+import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:iconly/iconly.dart';
 
 // ignore: must_be_immutable
-class DetailsPage extends StatefulWidget {
+class AdsConditionPage extends StatefulWidget {
   String image;
   bool liked;
   String subtitleIcon;
-  DetailsPage(this.image, this.liked, this.subtitleIcon, {super.key});
+  AdsConditionPage(this.image, this.liked, this.subtitleIcon, {super.key});
 
   @override
-  State<DetailsPage> createState() => _DetailsPageState();
+  State<AdsConditionPage> createState() => _AdsConditionPageState();
 }
 
-class _DetailsPageState extends State<DetailsPage> {
+class _AdsConditionPageState extends State<AdsConditionPage> {
   int activePage = 0;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    final read = context.read<AdsProvider>();
     return Scaffold(
       backgroundColor: Colors.white,
       body: SafeArea(
@@ -45,7 +45,7 @@ class _DetailsPageState extends State<DetailsPage> {
                     height: size.height * 0.3,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(widget.image),
+                        image: AssetImage(widget.image),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -125,7 +125,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             margin: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage(widget.image),
+                                image: AssetImage(widget.image),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
@@ -146,7 +146,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             margin: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage(widget.image),
+                                image: AssetImage(widget.image),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
@@ -167,7 +167,7 @@ class _DetailsPageState extends State<DetailsPage> {
                             margin: const EdgeInsets.all(2),
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: NetworkImage(widget.image),
+                                image: AssetImage(widget.image),
                                 fit: BoxFit.cover,
                               ),
                               borderRadius: BorderRadius.circular(16.0),
@@ -219,25 +219,29 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                           ),
                           const SizedBox(height: 4),
-                          const Text(
-                            "16 000 000 UZS",
-                            style: TextStyle(
+                          Text(
+                            read.priceController.text != ""
+                                ? read.priceController.text
+                                : "16 000 000 UZS",
+                            style: const TextStyle(
                               color: StaticColors.kBlackTextColor,
                               fontSize: 24.0,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           _title("Tavsif"),
-                          const Text(
-                            "iPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib olganimdek sotaman yangi telefon modeli.Ekrandagi oyna hech qachon original bo'lmaydi ayni paytda o'zgarganiPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib olganimdek sotaman yangi telefon modeli.Ekrandagi oyna hech qachon original bo'lmaydi ayni paytda o'zgargan",
-                            style: TextStyle(
+                          Text(
+                            read.tavsifController.text != ""
+                                ? read.tavsifController.text
+                                : "iPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib olganimdek sotaman yangi telefon modeli.Ekrandagi oyna hech qachon original bo'lmaydi ayni paytda o'zgarganiPhone 10xs 64gb kumush sotiladi holati yaxshi. Men sotib olganimdek sotaman yangi telefon modeli.Ekrandagi oyna hech qachon original bo'lmaydi ayni paytda o'zgargan",
+                            style: const TextStyle(
                               color: StaticColors.kSubtitleColor,
                               fontSize: 14.0,
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           _title("Xarakteristikasi"),
-                          const Characteristics(),
+                          const ItemChars(),
                           _title("Joylashuv"),
                           Container(
                             width: size.width,
@@ -252,18 +256,20 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
-                              children: const [
+                              children: [
                                 Text(
-                                  "Ташкент, Чиланзарский\nТашкент, Чиланзарский район",
+                                  read.locationController.text != ""
+                                      ? read.locationController.text
+                                      : "Ташкент, Чиланзарский\nТашкент, Чиланзарский район",
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w400,
                                     fontSize: 14.0,
                                   ),
                                 ),
-                                SizedBox(height: 10),
-                                Icon(
+                                const SizedBox(height: 10),
+                                const Icon(
                                   IconlyLight.location,
                                   color: Colors.white,
                                   size: 28.0,
@@ -272,15 +278,18 @@ class _DetailsPageState extends State<DetailsPage> {
                             ),
                           ),
                           _title("E’lon beruvchi"),
-                          const WhoseAds(),
+                          const Owner(),
                           _title("Qo’shimcha tovarlar"),
                           const ItemCard(),
                           const SizedBox(height: 24),
-                          ButtonFields(() {}, "Yozish"),
                           OutlinButton(
-                              size: size,
-                              function: () {},
-                              title: "SMS yozish / Qo’ng’iroq")
+                              size: MediaQuery.of(context).size,
+                              function: () {
+                                Navigator.pop(context);
+                              },
+                              title: "Orqaga"),
+                          const SizedBox(height: 12),
+                          ButtonFields(() {}, "E'lon berish"),
                         ],
                       ),
                     ),
@@ -310,6 +319,86 @@ class _DetailsPageState extends State<DetailsPage> {
           ),
         ),
         const SizedBox(height: 8),
+      ],
+    );
+  }
+}
+
+class Owner extends StatelessWidget {
+  const Owner({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        const CircleAvatar(
+          radius: 32,
+          backgroundImage: NetworkImage("https://source.unsplash.com/random"),
+        ),
+        const SizedBox(width: 8),
+        RichText(
+          text: TextSpan(
+            children: [
+              TextSpan(
+                text: context.read<AdsProvider>().ownerNameController.text == ""
+                    ? "Kattabekov Jamshidbek\n"
+                    : context.read<AdsProvider>().ownerNameController.text,
+                style: const TextStyle(
+                  color: StaticColors.kBlackTextColor,
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+              const TextSpan(
+                text: "Oxirgi online vaqti: 15:30",
+                style: TextStyle(
+                  color: StaticColors.kSubtitleColor,
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
+  }
+}
+
+class ItemChars extends StatelessWidget {
+  const ItemChars({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final read = context.read<AdsProvider>();
+    return Row(
+      children: [
+        const Expanded(
+          flex: 1,
+          child: Text(
+            "Markasi\n\nChiqarilgan sanasi\n\nRangi\n\nHolati\n\nHududi\n\nBatarekasi",
+            style: TextStyle(
+              color: StaticColors.kSubtitleColor,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: Text(
+            "${read.modeli}\n\n15.08.2021\n\n${read.rangi}\n\n${read.holati}\n\n${read.locationController.text}\n\n94 %",
+            style: const TextStyle(
+              color: StaticColors.kBlackTextColor,
+              fontSize: 14.0,
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        )
       ],
     );
   }
