@@ -389,7 +389,7 @@ class _AddAdsPageState extends State<AddAdsPage> {
                       MaterialPageRoute(
                         builder: (context) => AdsConditionPage(
                           "assets/images/iphone-background.png",
-                          true,
+                          false,
                           "assets/icons/white-apple.svg",
                         ),
                       ),

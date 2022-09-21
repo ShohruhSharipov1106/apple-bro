@@ -1,10 +1,12 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/home/home_page.dart';
+import 'package:apple_bro_test/pages/profile/about_app_page.dart';
 import 'package:apple_bro_test/pages/profile/change_lang_page.dart';
 import 'package:apple_bro_test/pages/profile/components/profile_list_tile.dart';
 import 'package:apple_bro_test/pages/profile/edit_password_page.dart';
 import 'package:apple_bro_test/pages/profile/edit_profile_page.dart';
 import 'package:apple_bro_test/pages/profile/final_ads_page.dart';
+import 'package:apple_bro_test/pages/profile/payment_history_page.dart';
 import 'package:apple_bro_test/pages/profile/your_card_page.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -61,14 +63,14 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ),
-            ProfileListTile("Yakunlangan e’lonlar", FinalAdsPage()),
+            ProfileListTile("Yakunlangan e’lonlar", const FinalAdsPage()),
             ProfileListTile("Sizning hamyoningiz", const YourCardPage(),
                 summa: "1 500 000 uzs", hasTrailing: true),
-            ProfileListTile("To’lovlar tarixi", () {}),
+            ProfileListTile("To’lovlar tarixi", const PaymentHistoryPage()),
             ProfileListTile("Profilni tahrirlash", const EditProfilePage()),
             ProfileListTile("Parolni o’zgartirish", const EditPasswordPage()),
             ProfileListTile("Tilni o’zgartirish", const ChangeLangPage()),
-            ProfileListTile("Ilova haqida", () {}),
+            ProfileListTile("Ilova haqida", const AboutAppPage()),
             Padding(
               padding: const EdgeInsets.only(top: 28, bottom: 27),
               child: ProfileListTile("Profildan chiqish", const HomePage(),

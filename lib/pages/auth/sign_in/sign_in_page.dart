@@ -74,7 +74,7 @@ class SignInPage extends StatelessWidget {
                     if (formKey.currentState!.validate()) {
                       StaticDatas.storage.write("firstTime", "firstTime");
                       Navigator.pushReplacement(context,
-                          MaterialPageRoute(builder: (context) => HomePage()));
+                          MaterialPageRoute(builder: (context) => const HomePage()));
                     }
                   },
                   "Kirish",

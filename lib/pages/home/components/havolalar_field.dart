@@ -1,4 +1,5 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/home/components/story_view.dart';
 
 class HavolalarField extends StatelessWidget {
   const HavolalarField({
@@ -30,27 +31,36 @@ class HavolalarField extends StatelessWidget {
                 mainAxisSpacing: 10,
                 crossAxisSpacing: 10,
               ),
-              itemBuilder: (context, index) => DecoratedBox(
-                decoration: const BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      Color(0xff357AF6),
-                      Color(0xffF635C0),
-                    ],
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        StoryView("https://source.unsplash.com/random/$index"),
                   ),
-                  shape: BoxShape.circle,
                 ),
-                child: Padding(
-                  padding: const EdgeInsets.all(1.5),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.white,
+                child: DecoratedBox(
+                  decoration: const BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        Color(0xff357AF6),
+                        Color(0xffF635C0),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                    shape: BoxShape.circle,
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(1.5),
                     child: CircleAvatar(
-                      radius: size.height * 0.033,
-                      backgroundColor: StaticColors.kActiveBorderColor,
-                      backgroundImage: NetworkImage(
-                          "https://source.unsplash.com/random/$index"),
+                      backgroundColor: Colors.white,
+                      child: CircleAvatar(
+                        radius: size.height * 0.033,
+                        backgroundColor: StaticColors.kActiveBorderColor,
+                        backgroundImage: NetworkImage(
+                            "https://source.unsplash.com/random/$index"),
+                      ),
                     ),
                   ),
                 ),

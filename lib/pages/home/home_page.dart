@@ -1,10 +1,8 @@
 import 'package:apple_bro_test/constants/exports.dart';
-import 'package:apple_bro_test/pages/add_ads/add_ads_page.dart';
 import 'package:apple_bro_test/pages/add_ads/ads_page.dart';
 import 'package:apple_bro_test/pages/chat/contact_page.dart';
 import 'package:apple_bro_test/pages/favorites/favorites_page.dart';
 import 'package:apple_bro_test/pages/home/home_screen.dart';
-import 'package:persistent_bottom_nav_bar/persistent-tab-view.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {

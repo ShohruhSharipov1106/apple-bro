@@ -1,11 +1,22 @@
 import 'package:apple_bro_test/constants/exports.dart';
+import 'package:apple_bro_test/pages/favorites/components/filter_body.dart';
 import 'package:apple_bro_test/pages/favorites/components/main_card.dart';
 import 'package:flutter/cupertino.dart';
 
-class FavoritesPage extends StatelessWidget {
-  FavoritesPage({super.key});
+List filters = [];
+
+class FavoritesPage extends StatefulWidget {
+  const FavoritesPage({super.key});
+
+  @override
+  State<FavoritesPage> createState() => _FavoritesPageState();
+}
+
+class _FavoritesPageState extends State<FavoritesPage> {
   final likes = List.generate(10, (index) => true);
+
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
+
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -30,6 +41,38 @@ class FavoritesPage extends StatelessWidget {
                     color: StaticColors.kBlackTextColor,
                   ),
                 ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: filters.length,
+                    itemBuilder: (BuildContext context, int index) {
+                      return Chip(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(6),
+                            side: BorderSide(
+                                color:
+                                    const Color(0xff000A14).withOpacity(0.2))),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 8),
+                        label: Text(
+                          filters[index],
+                          style: const TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w400,
+                            color: Color(0xff000A14),
+                          ),
+                        ),
+                        deleteIcon: CircleAvatar(
+                          backgroundColor:
+                              const Color(0xff747480).withOpacity(0.08),
+                          child: Icon(
+                            Icons.clear,
+                            color: const Color(0xff3C3C43).withOpacity(0.6),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ),
                 GestureDetector(
                   child: Container(
                     width: size.width * 0.1,
@@ -49,30 +92,16 @@ class FavoritesPage extends StatelessWidget {
                     showModalBottomSheet(
                       context: context,
                       isScrollControlled: true,
-                      builder: (context) => SizedBox(
-                        height: size.height * 0.5,
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: const [
-                                Text("Reset"),
-                                Text("Filter"),
-                                Text("Tasdiqlash"),
-                              ],
-                            ),
-                            SingleChildScrollView(
-                              physics: const BouncingScrollPhysics(),
-                              child: Column(
-                                children: const [
-                                  Divider(),
-                                  Text("Mahsulot turi"),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                      isDismissible: false,
+                      shape: const RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(16))),
+                      builder: (context) =>
+                          StatefulBuilder(builder: (context, setState) {
+                        return SizedBox(
+                            height: size.height * 0.8,
+                            child: const FilterBody());
+                      }),
                     );
                   },
                 ),

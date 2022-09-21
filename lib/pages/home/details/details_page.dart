@@ -1,11 +1,9 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/home/details/components/characteristics.dart';
-import 'package:apple_bro_test/pages/home/details/components/elev_button.dart';
 import 'package:apple_bro_test/pages/home/details/components/item_card.dart';
 import 'package:apple_bro_test/pages/home/details/components/out_button.dart';
 import 'package:apple_bro_test/pages/home/details/components/whose_ads.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:iconly/iconly.dart';
 
 // ignore: must_be_immutable
 class DetailsPage extends StatefulWidget {

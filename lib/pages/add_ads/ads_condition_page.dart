@@ -1,9 +1,7 @@
 import 'package:apple_bro_test/constants/exports.dart';
-import 'package:apple_bro_test/pages/home/details/components/characteristics.dart';
-import 'package:apple_bro_test/pages/home/details/components/elev_button.dart';
+import 'package:apple_bro_test/pages/add_ads/give_ads_page.dart';
 import 'package:apple_bro_test/pages/home/details/components/item_card.dart';
 import 'package:apple_bro_test/pages/home/details/components/out_button.dart';
-import 'package:apple_bro_test/pages/home/details/components/whose_ads.dart';
 import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -289,7 +287,12 @@ class _AdsConditionPageState extends State<AdsConditionPage> {
                               },
                               title: "Orqaga"),
                           const SizedBox(height: 12),
-                          ButtonFields(() {}, "E'lon berish"),
+                          ButtonFields(() {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const GiveAdsPage()));
+                          }, "E'lon berish"),
                         ],
                       ),
                     ),

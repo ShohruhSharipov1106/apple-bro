@@ -1,7 +1,6 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/home/details/components/out_button.dart';
 import 'package:apple_bro_test/pages/home/home_page.dart';
-import 'package:apple_bro_test/pages/profile/fullfill_card_page.dart';
 import 'package:flutter/cupertino.dart';
 
 class SuccessAds extends StatelessWidget {

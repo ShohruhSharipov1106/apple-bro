@@ -1,6 +1,5 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/add_ads/add_ads_page.dart';
-import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:flutter/cupertino.dart';
 
 class AdsPage extends StatefulWidget {

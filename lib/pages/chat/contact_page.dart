@@ -37,7 +37,7 @@ class ContactPage extends StatelessWidget {
                       ListTile(
                         onTap: () => Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => ChatPage()),
+                          MaterialPageRoute(builder: (context) => const ChatPage()),
                         ),
                         title: const Text(
                           "Jane Cooper",
