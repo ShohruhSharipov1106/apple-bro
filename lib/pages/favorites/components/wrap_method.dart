@@ -8,6 +8,7 @@ class WrapMethod extends StatefulWidget {
   String title;
   List<String> labels;
   bool enableRst;
+  // ignore: prefer_typing_uninitialized_variables
   var provide;
   @override
   State<WrapMethod> createState() => _WrapMethodState();

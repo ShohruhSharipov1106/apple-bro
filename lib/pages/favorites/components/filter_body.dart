@@ -33,7 +33,7 @@ class _FilterBodyState extends State<FilterBody> {
                 border: Border.symmetric(
                     horizontal: BorderSide(color: Colors.grey.shade200)),
               ),
-              padding: EdgeInsets.symmetric(horizontal: 16),
+              padding: const  EdgeInsets.symmetric(horizontal: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -73,9 +73,6 @@ class _FilterBodyState extends State<FilterBody> {
                       context.read<FilterProvider>().type == null
                           ? null
                           : filters.add(context.read<FilterProvider>().type);
-                      context.read<FilterProvider>().color == null
-                          ? null
-                          : filters.add(context.read<FilterProvider>().color);
                       context.read<FilterProvider>().sikl == null
                           ? null
                           : filters.add(context.read<FilterProvider>().sikl);

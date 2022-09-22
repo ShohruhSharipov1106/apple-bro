@@ -3,6 +3,7 @@ import 'package:apple_bro_test/pages/add_ads/ads_page.dart';
 import 'package:apple_bro_test/pages/chat/contact_page.dart';
 import 'package:apple_bro_test/pages/favorites/favorites_page.dart';
 import 'package:apple_bro_test/pages/home/home_screen.dart';
+import 'package:apple_bro_test/pages/lifehack/lifehack_page.dart';
 
 // ignore: must_be_immutable
 class HomePage extends StatefulWidget {
@@ -16,9 +17,10 @@ class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   List pages = [
     HomeScreen(),
-    FavoritesPage(),
+    const FavoritesPage(),
     const AdsPage(),
     const ContactPage(),
+    const LifelackPage()
   ];
   @override
   Widget build(BuildContext context) {

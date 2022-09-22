@@ -1,7 +1,5 @@
 import 'package:apple_bro_test/constants/exports.dart';
-import 'package:apple_bro_test/pages/favorites/favorites_page.dart';
-import 'package:apple_bro_test/pages/home/home_screen.dart';
-import 'package:apple_bro_test/pages/profile/final_ads_page.dart';
+import 'package:apple_bro_test/pages/home/home_page.dart';
 import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:apple_bro_test/provider/filter_provider.dart';
 import 'package:apple_bro_test/provider/payment_provider.dart';
@@ -48,7 +46,7 @@ class MyApp extends StatelessWidget {
       // home: StaticDatas.storage.read("firstTime") == "firstTime"
       //     ? const HomePage()
       //     : const SplashPage1(),
-      home: FavoritesPage(),
+      home: const HomePage(),
     );
   }
 }

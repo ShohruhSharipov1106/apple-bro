@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 // ignore: must_be_immutable
 class ProfileListTile extends StatelessWidget {
   String title;
+  // ignore: prefer_typing_uninitialized_variables
   final page;
   String summa;
   bool hasPre;

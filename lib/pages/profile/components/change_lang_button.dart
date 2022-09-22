@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 // ignore: must_be_immutable
 class ChangeLangButton extends StatefulWidget {
   String text;
+  // ignore: prefer_typing_uninitialized_variables
   final function;
   int active;
   int current;

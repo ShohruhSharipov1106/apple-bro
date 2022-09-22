@@ -27,18 +27,18 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
         bottom: PreferredSize(
-          preferredSize: Size(200, 80),
+          preferredSize: const Size(200, 80),
           child: Container(
             height: size.height * 0.05,
             width: size.width * 0.9,
-            margin: EdgeInsets.all(16),
+            margin: const EdgeInsets.all(16),
             decoration: BoxDecoration(
               color: StaticColors.kGreyBackColor,
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: TextField(
               controller: searchTextController,
-              autofillHints: [
+              autofillHints: const [
                 "Apple iPhone 12",
                 "Apple 11 Pro",
                 "Apple X",

@@ -41,8 +41,11 @@ class _FavoritesPageState extends State<FavoritesPage> {
                     color: StaticColors.kBlackTextColor,
                   ),
                 ),
-                Expanded(
+                SizedBox(
+                  width: size.width * 0.4,
+                  height: size.height * 0.05,
                   child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
                     itemCount: filters.length,
                     itemBuilder: (BuildContext context, int index) {
                       return Chip(

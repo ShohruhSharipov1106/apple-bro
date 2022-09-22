@@ -9,6 +9,7 @@ class OutlinButton extends StatelessWidget {
   }) : super(key: key);
 
   final Size size;
+  // ignore: prefer_typing_uninitialized_variables
   final function;
   final String title;
 
