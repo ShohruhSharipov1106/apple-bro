@@ -11,7 +11,7 @@ class StoryView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Story(
       onFlashForward: () => Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => HomeScreen())),
+          MaterialPageRoute(builder: (context) => const HomeScreen())),
       onFlashBack: () => Navigator.pop(context),
       momentBuilder: (context, index) {
         return Scaffold(

@@ -1,9 +1,8 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/favorites/components/filter_body.dart';
 import 'package:apple_bro_test/pages/favorites/components/main_card.dart';
+import 'package:apple_bro_test/provider/filter_provider.dart';
 import 'package:flutter/cupertino.dart';
-
-List filters = [];
 
 class FavoritesPage extends StatefulWidget {
   const FavoritesPage({super.key});
@@ -42,34 +41,41 @@ class _FavoritesPageState extends State<FavoritesPage> {
                   ),
                 ),
                 SizedBox(
-                  width: size.width * 0.4,
+                  width: size.width * 0.65,
                   height: size.height * 0.05,
                   child: ListView.builder(
                     scrollDirection: Axis.horizontal,
-                    itemCount: filters.length,
+                    itemCount: context.read<FilterProvider>().filters.length,
                     itemBuilder: (BuildContext context, int index) {
-                      return Chip(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(6),
-                            side: BorderSide(
-                                color:
-                                    const Color(0xff000A14).withOpacity(0.2))),
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        label: Text(
-                          filters[index],
-                          style: const TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff000A14),
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: Chip(
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(6),
+                              side: BorderSide(
+                                  color: const Color(0xff000A14)
+                                      .withOpacity(0.2))),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 8),
+                          label: Text(
+                            context.read<FilterProvider>().filters[index],
+                            style: const TextStyle(
+                              fontSize: 13,
+                              fontWeight: FontWeight.w400,
+                              color: Color(0xff000A14),
+                            ),
                           ),
-                        ),
-                        deleteIcon: CircleAvatar(
-                          backgroundColor:
-                              const Color(0xff747480).withOpacity(0.08),
-                          child: Icon(
-                            Icons.clear,
-                            color: const Color(0xff3C3C43).withOpacity(0.6),
+                          onDeleted: () {
+                            context.read<FilterProvider>().filters.remove(
+                                context.read<FilterProvider>().filters[index]);
+                          },
+                          deleteIconColor:
+                              const Color(0xff3C3C43).withOpacity(0.6),
+                          deleteIcon: CircleAvatar(
+                            backgroundColor:
+                                const Color(0xff747480).withOpacity(0.08),
+                            child: const Icon(Icons.clear, size: 15),
                           ),
                         ),
                       );

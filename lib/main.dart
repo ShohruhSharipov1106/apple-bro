@@ -1,5 +1,6 @@
 import 'package:apple_bro_test/constants/exports.dart';
 import 'package:apple_bro_test/pages/home/home_page.dart';
+import 'package:apple_bro_test/pages/splash/screens/splash_page1.dart';
 import 'package:apple_bro_test/provider/ads_provider.dart';
 import 'package:apple_bro_test/provider/filter_provider.dart';
 import 'package:apple_bro_test/provider/payment_provider.dart';
@@ -21,8 +22,6 @@ void main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     StaticDatas.storage.initStorage;
@@ -43,10 +42,9 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      // home: StaticDatas.storage.read("firstTime") == "firstTime"
-      //     ? const HomePage()
-      //     : const SplashPage1(),
-      home: const HomePage(),
+      home: StaticDatas.storage.read("firstTime") == "firstTime"
+          ? const HomePage()
+          : const SplashPage1(),
     );
   }
 }

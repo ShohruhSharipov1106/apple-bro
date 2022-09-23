@@ -16,7 +16,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   int currentIndex = 0;
   List pages = [
-    HomeScreen(),
+    const HomeScreen(),
     const FavoritesPage(),
     const AdsPage(),
     const ContactPage(),

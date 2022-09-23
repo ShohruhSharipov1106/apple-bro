@@ -54,4 +54,5 @@ class FilterProvider extends ChangeNotifier {
     "iPhone 11 Pro",
     "iPhone 8"
   ];
+  List filters = [];
 }
